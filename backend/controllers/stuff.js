@@ -14,9 +14,11 @@ exports.getOneSauce = (req, res, next) => {
 };
 
 exports.createSauce = (req, res, next) => {
-  delete req.body._id; // car cré&e automatiqeument par mongoose
+  const sauceObject = JSON.parse(req.body.sauce); // le but etant de séparer de la req.body, l'image et le reste
+  delete sauceObject._id; // car crée automatiqeument par mongoose
   const sauce = new Sauce({ 
-    ...req.body
+    ...sauceObject, // et non plus req.body
+    imageUrl: `${req.protocol}://${req.get('host')}/pictures/${req.file.filename}` // attention ici important  
   });
   sauce.save() // attention ici sauce est une constance rien a voir avec le SauceSchema
     .then(() => res.status(201).json({ message: 'Sauce enregistrée !'}))
