@@ -25,6 +25,28 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/api/stuff', (req, res, next) => { // ici la route de get => /api/stuff  et app.get pour requete get au liueu de app.use
+  const stuff = [
+    {
+      _id: 'oeihfzeoi',
+      title: 'Mon premier objet',
+      description: 'Les infos de mon premier objet',
+      imageUrl: 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg',
+      price: 4900,
+      userId: 'qsomihvqios',
+    },
+    {
+      _id: 'oeihfzeomoihi',
+      title: 'Mon deuxième objet',
+      description: 'Les infos de mon deuxième objet',
+      imageUrl: 'https://cdn.pixabay.com/photo/2019/06/11/18/56/camera-4267692_1280.jpg',
+      price: 2900,
+      userId: 'qsomihvqios',
+    },
+  ];
+  res.status(200).json(stuff);
+});
+
 app.use(bodyParser.json()); // va de paire avec le bodyParser d'en haut
 app.use('/api/sauces', stuffRoutes); // on appel stuff routes avec pour début d'identifaint des routes /api/sauces
 
