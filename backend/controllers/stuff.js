@@ -23,6 +23,10 @@ exports.createSauce = (req, res, next) => {
   delete sauceObject._id; // car crée automatiqeument par mongoose
   const sauce = new Sauce({ 
     ...sauceObject, // et non plus req.body
+    likes: 0,   // bonne utilisation ?
+    dislikes: 0,
+    userDisliked: [],
+    userLiked: [],
     imageUrl: `${req.protocol}://${req.get('host')}/pictures/${req.file.filename}` // attention ici important  
   });
   sauce.save() // attention ici sauce est une constance rien a voir avec le SauceSchema
@@ -44,7 +48,7 @@ exports.updateSauce = (req, res, next) => {
       dislikes: 0,
       userDisliked: [],
       userLiked: [],
-       _id: req.params.id }
+       _id: req.params.id } // utilité de rappeler le req.params.id ici ?
      ) 
     .then(() => res.status(200).json({ message : 'Sauce modifiée !'}))
     .catch(error => res.status(400).json({ error }));
@@ -59,7 +63,7 @@ exports.deleteSauce = (req, res, next) => {
         });
       }
       if(sauce.userId !== req.auth.userId){
-        res.status(401).json({
+        res.status(403).json({
           error: new Error('requete non autorisé !')
         });
       }

@@ -6,7 +6,7 @@ const User = require('../models/User');
 
 exports.signUp = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)  // FONCITON ASYNC QUI RENVOI DONC UNE PROMISE, HASH LE MDP , 10 ETANT LE NOMBRE DE FOIS QU'IL PASSE DEDANS, PLUS IL PASSE PLUS IL EST 'SECURISE' 10 TOURS OK MDP
-  .then(hash =>{                   // DOC BCRYPT https://www.npmjs.com/package/bcrypt
+  .then(hash => {                   // DOC BCRYPT https://www.npmjs.com/package/bcrypt
     const user = new User({
       email: req.body.email,
       password: hash // ASH ETANT LE RESULTAT DU HASHAGE 
@@ -29,9 +29,6 @@ exports.login = (req, res, next) => {
       // 2- comparaison des passwaord avec bcrypt.compare rappel bcrypt peu savoir si 2 ash different viennent d'une meme string de base
       bcrypt.compare(req.body.password, user.password) // renvoi un boléan
         .then(valid =>{
-          console.log(valid);
-          console.log(user.password)
-          console.log(req.body.password)
           if(!valid){
             return res.status(401).json({ error : 'Mot de passe incorrect !'});
           }
