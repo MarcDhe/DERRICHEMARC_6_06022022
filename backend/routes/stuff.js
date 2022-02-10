@@ -11,6 +11,9 @@ router.get('/', auth, stuffCtrl.getAllSauces);
 router.get('/:id', auth, stuffCtrl.getOneSauce);
 router.post('/', auth, multer, stuffCtrl.createSauce);
 router.put('/:id', auth, stuffCtrl.updateSauce);
-router.delete('/:id', auth, stuffCtrl.deleteSauce);
+router.delete('/:id', auth, multer, stuffCtrl.deleteSauce);
+
+router.post('/:id/like', auth, stuffCtrl.like);
 
 module.exports = router; // ATTENTION NE PAS L'OUBLIE CELUI LA  cf express.routr plus haut
+

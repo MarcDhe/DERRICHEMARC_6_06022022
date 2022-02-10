@@ -5,7 +5,7 @@ const bodyParser = require('body-parser'); // pour l'ajout d'autre dichier que a
 const stuffRoutes = require('./routes/stuff'); // IMPORTATION DU FICHIER STUFF DE ROUTES 
 const userRoutes = require('./routes/User'); // IMPORTATION DU FICHIER  USER DE ROUTES
 
-const path = require('path'); //UIMPORTANT POUR LES IMAGE ET LUTILISATION DE PATH.JOIN plus loin
+const path = require('path'); // IMPORTANT POUR LES IMAGES ET LUTILISATION DE PATH.JOIN plus loin
 
 const mongoose = require ('mongoose');
 
