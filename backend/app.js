@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 const bodyParser = require('body-parser'); // pour l'ajout d'autre dichier que app ( routes/.. et controllers/..)
-const stuffRoutes = require('./routes/stuff'); // IMPORTATION DU FICHIER STUFF DE ROUTES 
+const stuffRoutes = require('./routes/Sauce'); // IMPORTATION DU FICHIER STUFF DE ROUTES 
 const userRoutes = require('./routes/User'); // IMPORTATION DU FICHIER  USER DE ROUTES
 
 const path = require('path'); // IMPORTANT POUR LES IMAGES ET LUTILISATION DE PATH.JOIN plus loin

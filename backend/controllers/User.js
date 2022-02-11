@@ -36,16 +36,15 @@ exports.login = (req, res, next) => {
             userId: user._id,
             token: jwt.sign( // CREATION DU TOKEN
               {userId: user._id}, // user du token
-              'NO_OFFICIAL_TOKEN', // token fourni
+              'EPMSDXBQSG6YH23HUE6VTA2UC53MBOEFTUND7QWVQIFOAZU42BGIK3SIXKGEW', // token fourni
               {expiresIn: '24h'} // période d'expiration
             )
           });
         })
-        .catch(error => res.status(502).json({ error })); // 500 ERR SERVER   // un peu different ici car meme si il ne trouve pas le user il fait quand meme le tour
+        .catch(error => res.status(500).json({ error })); // 500 ERR SERVER   // un peu different ici car meme si il ne trouve pas le user il fait quand meme le tour
     })
-    .catch(error => res.status(501).json({ error })); // 500 ERR SERVER 
+    .catch(error => res.status(500).json({ error })); // 500 ERR SERVER 
 };
-
 
 // VERIF DES COMPTES EXISTANT A REMOVE AVANT DE RENDRE LE PROJET
 exports.getAllUser = (req, res, next) => {
