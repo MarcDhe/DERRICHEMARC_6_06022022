@@ -9,6 +9,8 @@ On Windows, these installations require to use PowerShell in administrator mode.
 
 Then, clone this repo, `npm install`
 Create a folder : `pictures`
+Create file `.env` and give it variables : - `MY_SECRET_TOKEN` with some value for token
+                                           - `MY_MONGODB_LINK` and has value give your mongoDB link
 
 ## Usage ##
 

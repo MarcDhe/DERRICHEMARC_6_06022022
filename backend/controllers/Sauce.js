@@ -21,7 +21,7 @@ exports.createSauce = (req, res, next) => {
   delete sauceObject._id; // car crée automatiqeument par mongoose
   const sauce = new Sauce({ 
     ...sauceObject, // et non plus req.body
-    likes: 0,   // bonne utilisation ?
+    likes: 0,  
     dislikes: 0,
     usersDisliked: [],
     usersLiked: [],

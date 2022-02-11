@@ -1,3 +1,5 @@
+require('dotenv').config() // SECURITE 
+
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -5,16 +7,17 @@ const User = require('../models/User');
 
 
 exports.signUp = (req, res, next) => {
-  bcrypt.hash(req.body.password, 10)  // FONCITON ASYNC QUI RENVOI DONC UNE PROMISE, HASH LE MDP , 10 ETANT LE NOMBRE DE FOIS QU'IL PASSE DEDANS, PLUS IL PASSE PLUS IL EST 'SECURISE' 10 TOURS OK MDP
-  .then(hash => {                   // DOC BCRYPT https://www.npmjs.com/package/bcrypt
-    const user = new User({
-      email: req.body.email,
-      password: hash // ASH ETANT LE RESULTAT DU HASHAGE 
-    });
-    user.save()
-      .then(() => res.status(201).json({ message : 'Utilisateur crée !'}))
-      .catch(error => res.status(400).json({ error})); 
-  })
+    bcrypt.hash(req.body.password, 10)  // FONCITON ASYNC QUI RENVOI DONC UNE PROMISE, HASH LE MDP , 10 ETANT LE NOMBRE DE FOIS QU'IL PASSE DEDANS, PLUS IL PASSE PLUS IL EST 'SECURISE' 10 TOURS OK MDP
+    .then(hash => {                   // DOC BCRYPT https://www.npmjs.com/package/bcrypt
+      const user = new User({
+        email: req.body.email,
+        password: hash // ASH ETANT LE RESULTAT DU HASHAGE 
+      });
+      user.save()
+        .then(() => res.status(201).json({ message : 'Utilisateur crée !'}))
+        .catch(error => res.status(400).json({ error})); 
+    })
+  
   .catch(error => res.status(500).json({ error})); // 500 ERR SERVER
 };
 
@@ -36,7 +39,7 @@ exports.login = (req, res, next) => {
             userId: user._id,
             token: jwt.sign( // CREATION DU TOKEN
               {userId: user._id}, // user du token
-              'EPMSDXBQSG6YH23HUE6VTA2UC53MBOEFTUND7QWVQIFOAZU42BGIK3SIXKGEW', // token fourni
+              `${process.env.MY_SECRET_TOKEN}`, // token fourni 
               {expiresIn: '24h'} // période d'expiration
             )
           });
