@@ -1,7 +1,7 @@
 const express = require('express');
-const router = express.Router();   // A RAJOUTER POUR FAIRE FONCITONNE LES ROUTER
+const router = express.Router();   
 
-const multer = require('../middleware/multer-config'); // ajout multer pour le simages
+const multer = require('../middleware/multer-config'); // ajout multer pour les images
 const auth = require('../middleware/auth');
 
 const stuffCtrl = require('../controllers/Sauce'); // IMPORTATION CONTROLLERS
@@ -15,5 +15,5 @@ router.delete('/:id', auth, multer, stuffCtrl.deleteSauce);
 
 router.post('/:id/like', auth, stuffCtrl.like);
 
-module.exports = router; // ATTENTION NE PAS L'OUBLIE CELUI LA  cf express.routr plus haut
+module.exports = router; 
 

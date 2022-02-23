@@ -7,10 +7,9 @@ Here are the dependancies you need to install:
 
 On Windows, these installations require to use PowerShell in administrator mode.
 
-Then, clone this repo, `npm install`
-Create a folder : `pictures`
-Create file `.env` and give it variables : - `MY_SECRET_TOKEN` with some value for token
-                                           - `MY_MONGODB_LINK` and has value give your mongoDB link
+Then, clone this repo, `npm install` in the backend folder
+Create file `.env` in backend folder and give it variables : - `MY_SECRET_TOKEN` with some value for token
+                                                             - `MY_MONGODB_LINK` and has value give your mongoDB link
 
 ## Usage ##
 

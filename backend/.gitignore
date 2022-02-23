@@ -1,4 +1,3 @@
 node_modules
-# si /* ninclu pas ce qu'il y a a l'interieur du dossier
-pictures
+pictures/*
 .env

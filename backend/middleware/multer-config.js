@@ -6,7 +6,7 @@ const MIME_TYPES = { // on créé un dictionnaire/objet en en foction des .mimet
   'image/png': 'png'
 };
 
-const storage = multer.diskStorage({ // diskStorage enregistrement sur disque // besoin de 2 chose destination et le filename
+const storage = multer.diskStorage({ 
    destination: (req, file, callback ) => {
      callback(null, 'pictures') // destination où l'on envoi les image  // null pour dire qu'il n'y a pas d'erreur
    },
